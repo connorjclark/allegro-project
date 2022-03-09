@@ -18,11 +18,23 @@ USE_FLAGS=(
   -O3
 )
 
+# might need to set this
+# EM_CACHE=/Users/connorclark/tools/emsdk/upstream/emscripten/cache
+
 emcmake cmake .. \
+  -D CMAKE_BUILD_TYPE=Release \
   -D ALLEGRO_SDL=ON \
+  -D SHARED=OFF \
+  -D WANT_MONOLITH=ON \
+  -D WANT_ALLOW_SSE=OFF \
+  -D WANT_DOCS=OFF \
+  -D WANT_TESTS=OFF \
+  -D WANT_OPENAL=OFF \
+  -D ALLEGRO_WAIT_EVENT_SLEEP=ON \
   -D SDL2_INCLUDE_DIR=$EM_CACHE/sysroot/include \
   -D CMAKE_C_FLAGS="${USE_FLAGS}" \
   -D CMAKE_CXX_FLAGS="${USE_FLAGS}" \
+  -D CMAKE_EXE_LINKER_FLAGS="${USE_FLAGS}" \
   -D CMAKE_EXECUTABLE_SUFFIX_CXX=".html"
 
 # WIP: errors due to https://github.com/emscripten-core/emscripten/issues/15325

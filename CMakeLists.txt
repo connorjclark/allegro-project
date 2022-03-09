@@ -46,7 +46,6 @@ project (AllegroProject)
 # ========
 
 include(ExternalProject)
-set(CMAKE_BUILD_TYPE "Debug")
 ExternalProject_Add(allegro5
     GIT_REPOSITORY    https://github.com/liballeg/allegro5.git
     GIT_TAG           5.2.7.0
@@ -58,9 +57,9 @@ ExternalProject_Add(allegro5
 		INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}/allegro5-install
 		CMAKE_ARGS
 			-DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/allegro5-install
-			-DCMAKE_BUILD_TYPE="Debug"
 			-DWANT_TESTS=OFF
 			-DWANT_EXAMPLES=OFF
+			-DWANT_DEMOS=OFF
     )
 
 # find_library(allegro_lib NAMES allegro REQUIRED HINTS ${CMAKE_CURRENT_BINARY_DIR}/allegro5-install)
