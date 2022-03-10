@@ -13,7 +13,7 @@ if(NOT allegro5_POPULATED)
 	set(SHARED OFF)
 	set(WANT_TESTS OFF)
 	set(WANT_EXAMPLES OFF)
-	set(WANT_DEMOS OFF)
+	set(WANT_DEMO OFF)
   add_subdirectory(${allegro5_SOURCE_DIR} ${allegro5_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
