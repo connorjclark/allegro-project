@@ -14,12 +14,11 @@ USE_FLAGS=(
   -s USE_LIBPNG=1
   -s FULL_ES2=1
   -s ASYNCIFY
-  -s TOTAL_MEMORY=2147418112
   -O3
 )
 
-# might need to set this
-EM_CACHE=/Users/connorclark/tools/emsdk/upstream/emscripten/cache
+# Wish I knew how to remove this.
+SDL2_INCLUDE_DIR=$(dirname $(which emcc))/cache/sysroot/include
 
 emcmake cmake .. \
   -D CMAKE_BUILD_TYPE=Release \
@@ -27,7 +26,7 @@ emcmake cmake .. \
   -D WANT_ALLOW_SSE=OFF \
   -D WANT_OPENAL=OFF \
   -D ALLEGRO_WAIT_EVENT_SLEEP=ON \
-  -D SDL2_INCLUDE_DIR="$EM_CACHE/sysroot/include" \
+  -D SDL2_INCLUDE_DIR="$SDL2_INCLUDE_DIR" \
   -D CMAKE_C_FLAGS="${USE_FLAGS[*]}" \
   -D CMAKE_CXX_FLAGS="${USE_FLAGS[*]}" \
   -D CMAKE_EXE_LINKER_FLAGS="${USE_FLAGS[*]}" \
